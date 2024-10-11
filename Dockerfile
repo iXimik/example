@@ -1,3 +1,3 @@
-FROM alpine:3.14
+FROM alpine:lates
 RUN apk add-no-cache mysql-client
 ENTRYPOINT ["mysql"]
