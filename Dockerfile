@@ -1,8 +1,11 @@
-# Используйте официальный образ Alpine 3.14
-FROM alpine:3.14
+FROM jenkins/jenkins:lts
 
-# Установите необходимые пакеты без кэша
-RUN apk add --no-cache mysql-client
+USER root
 
-# Установите точку входа для контейнера
-ENTRYPOINT ["mysql"]
+# Установка Docker
+RUN apt-get update && \
+    apt-get install -y docker.io && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+USER jenkins
